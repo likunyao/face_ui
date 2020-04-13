@@ -40,12 +40,29 @@ export default {
   },
   methods: {
     login() {
-      console.log('log operate');
       if (!this.username.trim() || !this.password.trim()) {
         this.$message({
           message: '请输入用户名和密码!',
           type: 'warning',
         });
+      } else {
+        const data = {
+          username: this.username,
+          password: this.password,
+        };
+        this.$axios.post('http://127.0.0.1:8000/login', data)
+          .then((res) => {
+            if (res.data.success === true) {
+              this.$message({
+                message: '登录成功!',
+                type: 'success',
+              });
+              this.$router.push({ path: '/Home' });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     },
   },
