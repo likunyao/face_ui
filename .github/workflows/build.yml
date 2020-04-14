@@ -16,6 +16,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    name: build&deploy
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -31,10 +32,10 @@ jobs:
     - name: Install Dependencies
       run: yarn
     
-    - name: build
+    - name: Build
       run: yarn build
 
-    - name: deploy file to server
+    - name: Deploy files to server
       uses: wlixcc/SFTP-Deploy-Action@v1.0
       with:
         username: ${{ secrets.USERNAME }}
