@@ -24,18 +24,18 @@
       </el-form>
     </div>
     <div>
-      <Camera
+      <!-- <Camera
         class="mask"
         ref="camera"
         :show_mask="show_camera"
         @click.native="close_camera"
-      />
+      /> -->
     </div>
   </div>
 </template>
 
 <script>
-import Camera from '@/components/Camera.vue';
+// import Camera from '@/components/Camera.vue';
 
 export default {
   data() {
@@ -46,11 +46,11 @@ export default {
     };
   },
   components: {
-    Camera,
+    // Camera,
   },
   methods: {
     register() {
-      console.log('register operate');
+      // console.log('register operate');
     },
     close_camera() {
       this.$refs.Camera.mediaStream.getVideoTracks()[0].stop();
