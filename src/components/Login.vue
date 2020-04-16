@@ -58,6 +58,11 @@ export default {
                 type: 'success',
               });
               this.$router.push({ path: '/Home' });
+            } else {
+              this.$message({
+                message: res.data.error,
+                type: 'warning',
+              });
             }
           })
           .catch((err) => {

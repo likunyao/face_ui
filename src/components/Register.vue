@@ -23,14 +23,6 @@
         >注册</el-button>
       </el-form>
     </div>
-    <div>
-      <!-- <Camera
-        class="mask"
-        ref="camera"
-        :show_mask="show_camera"
-        @click.native="close_camera"
-      /> -->
-    </div>
   </div>
 </template>
 
@@ -40,7 +32,6 @@
 export default {
   data() {
     return {
-      show_camera: 'true',
       username: '',
       password: '',
     };
@@ -50,7 +41,38 @@ export default {
   },
   methods: {
     register() {
-      // console.log('register operate');
+      if (!this.username.trim() || !this.password.trim()) {
+        this.$message({
+          message: '请输入用户名和密码!',
+          type: 'warning',
+        });
+      } else {
+        const data = {
+          username: this.username,
+          password: this.password,
+        };
+        this.$axios.post('http://127.0.0.1:8000/register', data)
+          .then((res) => {
+            if (res.data.success === true) {
+              this.$message({
+                message: '注册成功!',
+                type: 'success',
+              });
+              this.$router.push({ path: '/' });
+            } else {
+              this.$message({
+                message: res.data.error,
+                type: 'warning',
+              });
+            }
+          })
+          .catch((err) => {
+            this.$message({
+              mesage: err,
+              type: 'warning',
+            });
+          });
+      }
     },
     close_camera() {
       this.$refs.Camera.mediaStream.getVideoTracks()[0].stop();
