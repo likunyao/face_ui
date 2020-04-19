@@ -57,6 +57,7 @@ export default {
                 message: '登录成功!',
                 type: 'success',
               });
+              localStorage.setItem('token', res.data.token);
               this.$router.push({ path: '/Home' });
             } else {
               this.$message({

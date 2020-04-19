@@ -7,8 +7,22 @@ import router from './router';
 import store from './store';
 
 Vue.use(ElementUI);
-Vue.prototype.$axios = axios;
+
 Vue.config.productionTip = false;
+
+axios.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      // eslint-disable-next-line no-param-reassign
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error),
+);
+
+Vue.prototype.$axios = axios;
 
 new Vue({
   router,
