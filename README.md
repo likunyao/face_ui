@@ -1,3 +1,4 @@
+![build and deploy to server](https://github.com/likunyao/face_ui/workflows/build%20and%20deploy%20to%20server/badge.svg)
 # face_recognition
 
 ## Project setup
