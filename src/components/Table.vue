@@ -1,6 +1,6 @@
 <template>
   <el-table
-    :data="tableData"
+    :data="records"
     stripe
     style="width: 100%"
   >
@@ -17,11 +17,6 @@
     >
     </el-table-column>
     <el-table-column
-      prop="address"
-      label="地址"
-    >
-    </el-table-column>
-    <el-table-column
       prop="remark"
       label="备注"
     >
@@ -31,15 +26,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      tableData: Array(7).fill(this.$props),
-    };
-  },
-  props: {
-    date: String,
-    name: String,
-    address: String,
-  },
+  props: ['records'],
 };
 </script>

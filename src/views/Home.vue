@@ -11,7 +11,7 @@
         </el-avatar>
       </el-header>
       <el-main>
-        <Table v-bind="item"></Table>
+        <Table v-bind:records="items"></Table>
       </el-main>
       <el-footer>
         <p class="foot">foot</p>
@@ -21,24 +21,32 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue';
 import Table from '@/components/Table.vue';
 
 export default {
   name: 'Home',
   data() {
     return {
-      item: {
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
-      },
+      items: [],
     };
   },
   components: {
     // HelloWorld,
     Table,
+  },
+  created() {
+    this.$axios.get('http://127.0.0.1:8000/records')
+      .then((res) => {
+        if (res.data.success === true) {
+          this.items = JSON.parse(res.data.data);
+        }
+      })
+      .catch((err) => {
+        this.$message({
+          message: err,
+          type: 'warning',
+        });
+      });
   },
 };
 </script>
