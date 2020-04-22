@@ -51,7 +51,7 @@ export default {
           username: this.username,
           password: this.password,
         };
-        this.$axios.post('http://127.0.0.1:8000/register', data)
+        this.$axios.post('http://123.56.15.233:8000/register', data)
           .then((res) => {
             if (res.data.success === true) {
               this.$message({

@@ -35,7 +35,7 @@ export default {
     Table,
   },
   created() {
-    this.$axios.get('http://127.0.0.1:8000/records')
+    this.$axios.get('http://123.56.15.233:8000/records')
       .then((res) => {
         if (res.data.success === true) {
           this.items = JSON.parse(res.data.data);
