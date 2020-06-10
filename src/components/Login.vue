@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="login-container">
     <h1 class="title">登陆</h1>
     <el-form
@@ -27,6 +28,8 @@
         >注册</router-link>
       </div>
     </el-form>
+  </div>
+  <a href="http://www.beian.miit.gov.cn" class="beian">豫ICP备20015482</a>
   </div>
 </template>
 
@@ -99,5 +102,11 @@ export default {
 }
 .register-container {
   float: right;
+}
+.beian {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 50px;
 }
 </style>
